@@ -6,8 +6,13 @@
 	// get data
 	$url = 'http://127.0.0.1/mto/grab.php';
 	$data = file_get_contents($url);
+	$requests = __DIR__.'/requests/';
 	
 	if (!empty($data)) {
+		if (!is_dir($requests)) {
+			mkdir($requests);
+		}
+		file_put_contents($requests.microtime(true), $data);
 		$json = json_decode($data);
 		$results = array();
 		if (isset($json->results)) {
