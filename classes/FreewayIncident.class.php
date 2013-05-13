@@ -196,7 +196,9 @@
 			
 			$q = new Query();
 			$q->addTable('freeway_incidents');
-			$q->addWhere($matchFields);
+			foreach ($matchFields as $field => $value) {
+				$q->addWhere($field, $value);
+			}
 			$data = $this->db->getRow($q);
 			
 			if ($data) {
