@@ -5,7 +5,16 @@
 	// get url, parse out fields, return json. easy!
 
 	$url = 'http://www.mto.gov.on.ca/english/traveller/trip/road_closures.shtml';
-	$response = file_get_contents($url);
+	//$response = file_get_contents($url);
+	
+	$ch = curl_init($url);
+	curl_setopt_array($ch, array(
+	    CURLOPT_RETURNTRANSFER => true,
+	    CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36'
+	));
+	$response = curl_exec($ch);
+	curl_close($ch);
+	
 	$json = new stdClass();
 	
 	if (!empty($response)) {
@@ -62,4 +71,4 @@
 		$json->error = 'Failed to load MTO Road Closures website. Please try again later.';
 	}
 	
-	echo json_encode($json, JSON_PRETTY_PRINT );
+	echo json_encode($json);
