@@ -1,7 +1,7 @@
 <?php
 	require_once(__DIR__ . '/../Skoba.php');
 	require_once('Twilio/Twilio.php');
-	require_once('Twitter/twitteroauth.php');
+	require_once('Twitter/twitter.class.php');
 	
 	class Incident {
 		/**
@@ -44,7 +44,7 @@
 		function __construct($data = null) {
 			$this->db = new Db();
 			$this->twilio = new Services_Twilio("", "");
-			$this->twitter = new TwitterOAuth('', '', '', '');
+			$this->twitter = new Twitter('', '', '', '');
 			if ($data) {
 				$this->load($data); 
 			}
