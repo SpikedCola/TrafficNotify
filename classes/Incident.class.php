@@ -131,7 +131,7 @@
 			// a tweet is max 140 chars
 			$messages = explode("\n", wordwrap($this->message, 140));
 			foreach ($messages as $m) {
-				$this->twitter->post('statuses/update', array('status' => $m));
+				$this->twitter->send($m);
 			}
 		}
 	}
