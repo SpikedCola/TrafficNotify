@@ -4,8 +4,10 @@
 	require_once('classes/FreewayIncident.class.php');
 	
 	// get data
-	$url = 'http://127.0.0.1/mto/grab.php';
-	$data = file_get_contents($url);
+	$data = exec('php grab.php');
+	
+	//$url = 'http://127.0.0.1/mto/grab.php';
+	//$data = file_get_contents($url);
 	
 	if (!empty($data)) {
 		$json = json_decode($data);
@@ -44,5 +46,8 @@
 				}
 			}
 		}
+	}
+	else {
+		echo "!! empty response from grab.php\n";
 	}
 ?>
