@@ -90,7 +90,7 @@
 		 */
 		public function send() {
 			$this->buildMessage();
-			$this->sms();
+		//	$this->sms();
 			$this->tweet();
 		}
 		
