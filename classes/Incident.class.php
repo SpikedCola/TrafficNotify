@@ -125,11 +125,30 @@
 		
 		/**
 		 * Tweets a message. Automatically breaks
-		 * long messages into multiple tweets.
+		 * long messages into multiple tweets, and adds a hashtag
+		 * for the highway
 		 */
 		private function tweet() {
+			$message = $this->message;
+			
+			$hashtags = ['#Toronto'];
+			
+			$matches = [];
+			// matches "400", "401", "407ETR" etc
+			if (preg_match('/^(\d{3}).*/', $this->highway, $matches)) {
+				$hashtags[] = '#HWY'.$matches[1];
+			}
+			// matches "HWY 417" etc
+			elseif (preg_match('/(HWY .*)/', $this->highway, $matches)) {
+				$hashtags[] = '#'.str_replace(' ', '', $matches[1]);
+			}
+			elseif ($this->highway == 'QEW') {
+				$hashtags[] = '#QEW';
+			}
+			$message .= ' '.implode(' ', $hashtags);
+			
 			// a tweet is max 140 chars
-			$messages = explode("\n", wordwrap($this->message, 140));
+			$messages = explode("\n", wordwrap($message, 140));
 			foreach ($messages as $m) {
 				$this->twitter->send($m);
 			}
