@@ -100,6 +100,9 @@
 						break;
 					case 8: 
 						$field = 'last_updated';
+						if (!empty($value)) {
+							$value = strtotime($value);
+						}
 						break;
 					case 9: 
 						$field = 'last_change';
