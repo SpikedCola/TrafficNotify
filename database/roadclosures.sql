@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `freeway_incidents` (
   `event_end` int(10) unsigned NOT NULL,
   `last_change` int(10) unsigned NOT NULL,
   `last_change_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` TEXT NULL,
   PRIMARY KEY (`freeway_incident_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=185 ;
 

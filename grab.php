@@ -38,7 +38,7 @@
 								$highway->parse($rowNodes, $xpath);
 								$json->results->highways[] = (object)$highway->data;
 							}
-							elseif ($rowNodes->length == 11) {
+							elseif ($rowNodes->length == 12) {
 								$freeway = new FreewayIncident();
 								$freeway->parse($rowNodes, $xpath);
 								$json->results->freeways[] = (object)$freeway->data;

@@ -30,8 +30,9 @@
 				$cap = false;
 				switch ($key) {
 					case 0: 
+						// (header)
 						$field = 'summary';
-						break;
+						continue;
 					case 1:
 						$field = 'highway';
 						break;
@@ -65,29 +66,32 @@
 						$cap = true;
 						break;
 					case 6:
+						$field = 'comment';
+						break;
+					case 7:
 						$field = 'traffic_impact';
 						$cap = true;
 						break;
-					case 7:
+					case 8:
 						$field = 'reason';
 						$value = $this->cap($value); // incase capitalization changes
 						if ($value == 'Disable Vehicle') {
 							$value = 'Disabled Vehicle';
 						}
 						break;
-					case 8:
+					case 9:
 						$field = 'event_start';
 						if (!empty($value)) {
 							$value = strtotime($value);
 						}
 						break;
-					case 9: 
+					case 10: 
 						$field = 'event_end';
 						if (!empty($value)) {
 							$value = strtotime($value);
 						}
 						break;
-					case 10:
+					case 11:
 						$field = 'last_change';
 						$change = explode(' ', $value);
 						if (count($change) > 1) {
