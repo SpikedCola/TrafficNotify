@@ -1,7 +1,5 @@
 <?php
-	require_once('Skoba.php');
-	require_once('classes/HighwayIncident.class.php');
-	require_once('classes/FreewayIncident.class.php');
+	require_once(__DIR__.'/inc.php');
 	
 	// get data
 	$data = exec('php grab.php');
