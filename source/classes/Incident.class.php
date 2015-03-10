@@ -43,8 +43,8 @@
 	
 		function __construct($data = null) {
 			$this->db = new Db();
-			$this->twilio = new Services_Twilio("", "");
-			$this->twitter = new Twitter('', '', '', '');
+			$this->twilio = new Services_Twilio(TWILIO_SID, TWILIO_TOKEN);
+			$this->twitter = new Twitter(TWITTER_KEY, TWITTER_SECRET, TWITTER_OAUTH_TOKEN, TWITTER_OAUTH_TOKEN_SECRET);
 			if ($data) {
 				$this->load($data); 
 			}
