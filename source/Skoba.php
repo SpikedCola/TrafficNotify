@@ -2554,8 +2554,11 @@ class Query {
 	 * @return string A DELETE query for the current Query
 	 */
 	public function getDelete() {
-		$sql[] = 'DELETE FROM';
+		$sql[] = 'DELETE';
 		$sql[] = $this->buildTables();
+		$sql[] = 'FROM';
+		$sql[] = $this->buildTables();
+		$sql[] = $this->buildJoins();
 		$sql[] = $this->buildWhere();
 		$sql[] = $this->buildLimit();
 		return trim(implode(' ', $sql));
